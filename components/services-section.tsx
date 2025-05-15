@@ -1,23 +1,73 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronRight, Check } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function ServicesSection() {
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.6 } }
+  };
+  
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+  };
+  
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2
+      }
+    }
+  };
+  
+  const cardVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+    <motion.section 
+      className="py-16 md:py-24 bg-gray-50"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={fadeIn}
+    >
+      <motion.div className="container mx-auto px-4">
+        <motion.div 
+          className="text-center mb-12"
+          variants={fadeInUp}
+        >
           <h2 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 font-parkinsans">SERVICES</h2>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold font-parkinsans">
             Cleaning Services for Just
             <br />
             About Anyone
           </h3>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          variants={staggerContainer}
+        >
           {/* House Cleaning Card */}
-          <div className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full">
+          <motion.div 
+            className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full"
+            variants={cardVariant}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <div>
               <div className="bg-green-100 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden">
                 <Image
@@ -39,18 +89,31 @@ export function ServicesSection() {
               </ul>
             </div>
             <div className="mt-auto pt-6">
-              <Link
-                href="/services/house-cleaning"
-                className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.98 }}
               >
-                Learn more
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Link>
+                <Link
+                  href="/services/house-cleaning"
+                  className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+                >
+                  Learn more
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Short Term Rentals Card */}
-          <div className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full">
+          <motion.div 
+            className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full"
+            variants={cardVariant}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <div>
               <div className="bg-green-100 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden">
                 <Image
@@ -74,18 +137,31 @@ export function ServicesSection() {
               </ul>
             </div>
             <div className="mt-auto pt-6">
-              <Link
-                href="/services/short-term-rentals"
-                className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.98 }}
               >
-                Learn more
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Link>
+                <Link
+                  href="/services/short-term-rentals"
+                  className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+                >
+                  Learn more
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Commercial Card */}
-          <div className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full">
+          <motion.div 
+            className="bg-white rounded-3xl p-6 shadow-sm flex flex-col h-full"
+            variants={cardVariant}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <div>
               <div className="bg-green-100 w-14 h-14 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden">
                 <Image
@@ -110,18 +186,31 @@ export function ServicesSection() {
               </ul>
             </div>
             <div className="mt-auto pt-6">
-              <Link
-                href="/services/commercial"
-                className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.98 }}
               >
-                Learn more
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Link>
+                <Link
+                  href="/services/commercial"
+                  className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+                >
+                  Learn more
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Link>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Satisfaction Guarantee Card */}
-          <div className="bg-green-100 rounded-3xl p-6 flex flex-col h-full">
+          <motion.div 
+            className="bg-green-100 rounded-3xl p-6 flex flex-col h-full"
+            variants={cardVariant}
+            whileHover={{ 
+              y: -10, 
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             <div>
               <h4 className="text-2xl font-bold text-green-600 text-center mb-4 font-parkinsans">
                 100%
@@ -137,38 +226,55 @@ export function ServicesSection() {
               </ul>
             </div>
             <div className="mt-auto pt-6">
-              <Link
-                href="/get-quote"
-                className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.98 }}
               >
-                Get Price
-              </Link>
+                <Link
+                  href="/get-quote"
+                  className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-full transition-colors w-full justify-center font-outfit"
+                >
+                  Get Price
+                </Link>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
 }
 
 interface ServiceItemProps {
-  text: string
+  text: string;
 }
 
 function ServiceItem({ text }: ServiceItemProps) {
   return (
-    <li className="flex items-center">
+    <motion.li 
+      className="flex items-center"
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ x: 5 }}
+    >
       <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
       <span className="text-gray-600 font-outfit">{text}</span>
-    </li>
-  )
+    </motion.li>
+  );
 }
 
 function GuaranteeItem({ text }: ServiceItemProps) {
   return (
-    <li className="flex items-center">
+    <motion.li 
+      className="flex items-center"
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ x: 5 }}
+    >
       <Check className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
       <span className="text-green-800 font-outfit">{text}</span>
-    </li>
-  )
+    </motion.li>
+  );
 }

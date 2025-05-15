@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/house-cleaning/hero-section";
@@ -30,7 +32,7 @@ export default function HouseCleaningPage() {
               </div>
             </div>
           </div>
-          <div className="md:w-1/3 mt-12">
+          <div className="md:w-1/3 mt-12" style={{opacity: 1}}>
             <ServiceSidebar />
           </div>
         </div>

@@ -30,7 +30,7 @@ export default function DeepCleaningPage() {
               </div>
             </div>
           </div>
-          <div className="md:w-1/3 mt-12">
+          <div className="md:w-1/3 mt-12" style={{opacity: 1}}>
             <DeepServiceSidebar />
           </div>
         </div>

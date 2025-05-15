@@ -1,0 +1,127 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/services/post-construction-cleaning",
+      "destination": "/services/post-construction",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/services/post-construction-cleaning(?:/)?$"
+    },
+    {
+      "source": "/services/part-orientation-cleaning",
+      "destination": "/services/post-construction",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/services/part-orientation-cleaning(?:/)?$"
+    },
+    {
+      "source": "/post-construction-cleaning",
+      "destination": "/services/post-construction",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/post-construction-cleaning(?:/)?$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/pricing",
+      "regex": "^/pricing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pricing(?:/)?$"
+    },
+    {
+      "page": "/services",
+      "regex": "^/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services(?:/)?$"
+    },
+    {
+      "page": "/services/deep-cleaning",
+      "regex": "^/services/deep\\-cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/deep\\-cleaning(?:/)?$"
+    },
+    {
+      "page": "/services/house-cleaning",
+      "regex": "^/services/house\\-cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/house\\-cleaning(?:/)?$"
+    },
+    {
+      "page": "/services/move-in-out-cleaning",
+      "regex": "^/services/move\\-in\\-out\\-cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/move\\-in\\-out\\-cleaning(?:/)?$"
+    },
+    {
+      "page": "/services/office-cleaning",
+      "regex": "^/services/office\\-cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/office\\-cleaning(?:/)?$"
+    },
+    {
+      "page": "/services/post-construction",
+      "regex": "^/services/post\\-construction(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/post\\-construction(?:/)?$"
+    },
+    {
+      "page": "/services/recurring-cleaning",
+      "regex": "^/services/recurring\\-cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services/recurring\\-cleaning(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  },
+  "rewrites": []
+}

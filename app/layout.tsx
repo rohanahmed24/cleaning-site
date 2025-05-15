@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Outfit, Playfair_Display } from "next/font/google"
+import ClientLayout from "./ClientLayout"
 import "./globals.css"
 
 // Configure Outfit font from Google Fonts for paragraphs
@@ -29,9 +30,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${outfit.variable} ${playfair.variable}`}>{children}</body>
-    </html>
-  )
+  // Using ClientLayout for page transitions
+  return <ClientLayout>{children}</ClientLayout>
 }

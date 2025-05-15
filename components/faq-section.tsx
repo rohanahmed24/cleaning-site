@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { animations } from "./animated-components";
 
 interface FaqItem {
   id: string;
@@ -55,45 +57,109 @@ export function FaqSection() {
     );
   };
   
+  // Animation variants
+  const accordionVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      height: 0,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+  
   return (
-    <section className="w-full bg-white py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+    <motion.section 
+      className="w-full bg-white py-16 px-4"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={animations.fadeIn}
+    >
+      <motion.div 
+        className="max-w-4xl mx-auto"
+        variants={animations.staggerContainer}
+      >
+        <motion.div 
+          className="text-center mb-12"
+          variants={animations.fadeInUp}
+        >
           <span className="uppercase text-xs tracking-wider text-gray-500 font-parkinsans">FAQ</span>
           <h2 className="text-3xl md:text-4xl font-bold font-parkinsans mt-2 mb-2">
             Frequently Asked Questions
           </h2>
-        </div>
+        </motion.div>
         
-        <div className="space-y-4">
+        <motion.div className="space-y-4" variants={animations.staggerContainer}>
           {faqs.map(faq => (
-            <div 
+            <motion.div 
               key={faq.id}
               className="border border-gray-200 rounded-xl overflow-hidden"
+              variants={animations.staggerItem}
+              whileHover={{ boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)" }}
             >
-              <button
+              <motion.button
                 className="w-full flex items-center justify-between p-5 text-left focus:outline-none"
                 onClick={() => toggleFaq(faq.id)}
+                whileTap={{ backgroundColor: "rgba(0, 0, 0, 0.02)" }}
               >
                 <span className="font-medium text-lg text-gray-800 font-outfit">{faq.question}</span>
                 <span className="ml-4">
-                  {faq.isOpen ? (
-                    <Minus className="w-5 h-5 text-gray-500" />
-                  ) : (
-                    <Plus className="w-5 h-5 text-gray-500" />
-                  )}
+                  <AnimatePresence mode="wait" initial={false}>
+                    {faq.isOpen ? (
+                      <motion.div
+                        key="minus"
+                        initial={{ rotate: 90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Minus className="w-5 h-5 text-gray-500" />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="plus"
+                        initial={{ rotate: 90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Plus className="w-5 h-5 text-gray-500" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </span>
-              </button>
+              </motion.button>
               
-              {faq.isOpen && (
-                <div className="p-5 pt-0 text-gray-600 font-outfit leading-relaxed border-t border-gray-100">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
+              <AnimatePresence initial={false}>
+                {faq.isOpen && (
+                  <motion.div 
+                    className="overflow-hidden"
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    variants={accordionVariants}
+                  >
+                    <div className="p-5 pt-0 text-gray-600 font-outfit leading-relaxed border-t border-gray-100">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }

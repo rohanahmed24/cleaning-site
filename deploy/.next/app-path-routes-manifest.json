@@ -1,0 +1,14 @@
+{
+  "/about/page": "/about",
+  "/_not-found/page": "/_not-found",
+  "/contact/page": "/contact",
+  "/page": "/",
+  "/services/deep-cleaning/page": "/services/deep-cleaning",
+  "/services/house-cleaning/page": "/services/house-cleaning",
+  "/pricing/page": "/pricing",
+  "/services/move-in-out-cleaning/page": "/services/move-in-out-cleaning",
+  "/services/office-cleaning/page": "/services/office-cleaning",
+  "/services/page": "/services",
+  "/services/post-construction/page": "/services/post-construction",
+  "/services/recurring-cleaning/page": "/services/recurring-cleaning"
+}

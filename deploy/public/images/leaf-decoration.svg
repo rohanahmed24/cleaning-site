@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Leaf -->
+  <path d="M50 30C50 30 20 40 20 70C20 85 35 95 50 95C65 95 70 80 70 65C70 50 60 40 50 30Z" fill="#16a34a" fill-opacity="0.7"/>
+  
+  <!-- Right Leaf -->
+  <path d="M80 50C80 50 100 65 100 85C100 95 90 100 80 100C70 100 65 90 65 80C65 70 70 60 80 50Z" fill="#16a34a" fill-opacity="0.5"/>
+  
+  <!-- Small Stem -->
+  <path d="M60 70C60 70 62 80 65 90C68 100 70 110 70 110" stroke="#16a34a" stroke-width="2" stroke-linecap="round"/>
+</svg>

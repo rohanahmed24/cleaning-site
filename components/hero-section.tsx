@@ -3,8 +3,36 @@
 import { useState } from "react"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function HeroSection() {
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.8 } }
+  };
+  
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+  
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+  
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+  };
+  
   const [bedrooms, setBedrooms] = useState("1 Bedroom")
   const [bathrooms, setBathrooms] = useState("1 Bathroom")
   const [showBedroomDropdown, setShowBedroomDropdown] = useState(false)
@@ -14,9 +42,19 @@ export function HeroSection() {
   const bathroomOptions = ["1 Bathroom", "2 Bathrooms", "3 Bathrooms", "4 Bathrooms", "5+ Bathrooms"]
 
   return (
-    <section className="relative w-full min-h-[700px] md:min-h-[800px]">
+    <motion.section 
+      className="relative w-full min-h-[700px] md:min-h-[800px]"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <motion.div 
+        className="absolute inset-0 z-0 overflow-hidden"
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5 }}
+      >
         <Image
           src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
           alt="Professional cleaning team in kitchen"
@@ -26,12 +64,19 @@ export function HeroSection() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-      </div>
+      </motion.div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 pt-48 md:pt-64 flex flex-col items-center">
+      <motion.div 
+        className="container mx-auto px-4 relative z-10 pt-48 md:pt-64 flex flex-col items-center"
+        variants={staggerContainer}
+      >
         {/* Verified Cleaners Badge */}
-        <div className="flex items-center justify-center mb-6 bg-white bg-opacity-80 py-2 px-4 rounded-full">
+        <motion.div 
+          className="flex items-center justify-center mb-6 bg-white bg-opacity-80 py-2 px-4 rounded-full"
+          variants={scaleIn}
+          whileHover={{ scale: 1.05 }}
+        >
           <span className="text-sm text-gray-700 mr-2 font-outfit">Verified Cleaners</span>
           <div className="relative w-16 h-16">
             <div className="w-16 h-16 rounded-full bg-yellow-400 flex items-center justify-center border-2 border-green-500">
@@ -83,18 +128,38 @@ export function HeroSection() {
             </svg>
             <span className="ml-1 text-sm font-outfit">5★ Service</span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Hero Card */}
-        <div className="bg-white bg-opacity-95 rounded-xl p-6 md:p-10 w-full max-w-4xl shadow-lg">
+        {/* Hero Headline */}
+        <motion.div 
+          className="text-center mb-8"
+          variants={fadeInUp}
+        >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-2 font-parkinsans">
             Your #1 New York House
             <br />
-            Cleaning & Maid Service
+            Cleaning Service
           </h1>
-          <p className="text-center text-gray-600 mb-8 font-outfit">Get Free Quote from a Trusted Cleaning Service</p>
-
-          {/* Quote Form */}
+          <p className="text-center text-gray-100 mb-8 font-outfit">
+            Professional, Reliable, and Eco-Friendly Cleaning Services
+          </p>
+        </motion.div>
+        
+        {/* Quote Form Box */}
+        <motion.div 
+          className="bg-white p-8 rounded-xl shadow-xl w-full max-w-3xl text-center"
+          variants={fadeInUp}
+          whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+        >
+          <motion.h2 
+            className="text-2xl font-bold text-gray-900 mb-6 font-outfit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            Get a FREE Price Estimate
+          </motion.h2>
+          
           <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
               <input
@@ -183,16 +248,18 @@ export function HeroSection() {
             </div>
 
             <div className="md:col-span-3 flex justify-center mt-4">
-              <button
+              <motion.button
                 type="submit"
                 className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-8 rounded-full transition-colors font-outfit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Get Price
-              </button>
+              </motion.button>
             </div>
           </form>
-        </div>
-      </div>
-    </section>
-  )
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
 }

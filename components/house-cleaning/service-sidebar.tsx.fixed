@@ -1,0 +1,85 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { ChevronRight, Phone } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { animations } from "@/components/animated-components";
+
+export const ServiceSidebar = () => {
+  const services = [
+    { name: "House Cleaning", href: "/services/house-cleaning" },
+    { name: "Office Cleaning", href: "/services/office-cleaning" },
+    { name: "Deep Cleaning", href: "/services/deep-cleaning" },
+    { name: "Move In/Out Cleaning", href: "/services/move-in-out-cleaning" },
+    { name: "Post Construction Cleaning", href: "/services/post-construction" }
+  ];
+
+  return (
+    <div className="space-y-6 md:space-y-8 sticky md:top-24 top-20 w-full">
+      {/* Services Panel */}
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-gray-900">
+          Choose Any Service
+        </h3>
+        
+        <div className="space-y-2">
+          {services.map((service, index) => (
+            <Link 
+              key={service.name}
+              href={service.href}
+            >
+              <div className="flex items-center justify-between p-2 md:p-3 rounded-md border border-gray-100 text-sm md:text-base hover:bg-green-50 hover:border-green-200 transition-all">
+                <span className="text-gray-700">{service.name}</span>
+                <ChevronRight size={18} className="text-gray-400" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Panel */}
+      <div className="bg-yellow-100 p-4 md:p-6 rounded-lg md:rounded-xl shadow-md border border-yellow-200">
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">
+          Looking for top cleaning services? Not sure how?
+        </h3>
+        <p className="text-gray-700 mb-3 text-xs md:text-sm">
+          Contact us now!
+        </p>
+        
+        <div className="flex items-center gap-2 mb-4">
+          <div className="bg-yellow-300 rounded-full p-2 hover:scale-110 transition-transform">
+            <Phone size={18} className="text-gray-700" />
+          </div>
+          <Link href="tel:+1-800-567-8990">
+            <span className="text-gray-800 font-medium hover:text-green-600 transition-colors">
+              +1 800 567 8990
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Cleaning Tools Panel */}
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <div className="flex justify-center mb-3">
+          <Image 
+            src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+            alt="Cleaning tools and supplies"
+            width={200}
+            height={150}
+            className="rounded-lg"
+          />
+        </div>
+        <h3 className="text-lg font-semibold mb-2 text-gray-900">
+          Check out our kits for all the needs and reasons you have!
+        </h3>
+        <Link href="/services/cleaning-kits">
+          <div className="inline-block bg-green-600 text-white font-medium py-2 px-4 rounded-lg mt-2 text-xs md:text-sm text-center w-full hover:bg-green-700 transition-colors">
+            Explore Kits
+          </div>
+        </Link>
+      </div>
+    </div>
+  );
+};

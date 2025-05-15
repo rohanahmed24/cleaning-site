@@ -1,0 +1,14 @@
+{
+  "/about/page": "app/about/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/page": "app/page.js",
+  "/services/deep-cleaning/page": "app/services/deep-cleaning/page.js",
+  "/services/house-cleaning/page": "app/services/house-cleaning/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/services/move-in-out-cleaning/page": "app/services/move-in-out-cleaning/page.js",
+  "/services/office-cleaning/page": "app/services/office-cleaning/page.js",
+  "/services/page": "app/services/page.js",
+  "/services/post-construction/page": "app/services/post-construction/page.js",
+  "/services/recurring-cleaning/page": "app/services/recurring-cleaning/page.js"
+}

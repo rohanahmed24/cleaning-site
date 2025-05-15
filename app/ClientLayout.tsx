@@ -2,6 +2,8 @@
 
 import type React from "react"
 import { Outfit } from "next/font/google"
+import { PageTransition } from "@/components/page-transition"
+import { Preloader } from "@/components/preloader"
 import "./globals.css"
 
 // Configure Outfit font from Google Fonts
@@ -45,7 +47,10 @@ export default function ClientLayout({
           }
         `}</style>
       </head>
-      <body className={`${outfit.variable} font-outfit`}>{children}</body>
+      <body className={`${outfit.variable} font-outfit`}>
+        <Preloader />
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   )
 }
